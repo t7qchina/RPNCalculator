@@ -1,14 +1,22 @@
 package helpers;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.*;
 
 import java.util.List;
 
-public class InputHandlerTests {
+public class PlainTextHandlerTests {
+
+    PlainTextHandler plainTextHandler;
+
+    @Before
+    public void setup() {
+        plainTextHandler = new PlainTextHandler();
+    }
+
     @Test
     public void testCorrectInput() {
-        List<Command> commands = InputHandler.getCommands("1.23 4.56 *");
+
+        List<Command> commands = plainTextHandler.getCommands("1.23 4.56 *");
 
         Assert.assertEquals(3, commands.size());
 
@@ -27,16 +35,16 @@ public class InputHandlerTests {
 
     @Test
     public void testEmptyInput() {
-        List<Command> commands = InputHandler.getCommands("");
+        List<Command> commands = plainTextHandler.getCommands("");
         Assert.assertEquals(0, commands.size());
 
-        commands = InputHandler.getCommands(" ");
+        commands = plainTextHandler.getCommands(" ");
         Assert.assertEquals(0, commands.size());
     }
 
     @Test
     public void testReduntantSpace() {
-        List<Command> commands = InputHandler.getCommands("   1.23 4.56   *   ");
+        List<Command> commands = plainTextHandler.getCommands("   1.23 4.56   *   ");
 
         Assert.assertEquals(3, commands.size());
 
@@ -56,7 +64,7 @@ public class InputHandlerTests {
 
     @Test
     public void testNoTrailingSpace() {
-        List<Command> commands = InputHandler.getCommands("   1.23 4.56   *");
+        List<Command> commands = plainTextHandler.getCommands("   1.23 4.56   *");
 
         Assert.assertEquals(3, commands.size());
 

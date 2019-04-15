@@ -13,7 +13,7 @@ public class PositiveValidator implements Executable {
     public void execute(Command command, OperandStack stack) {
         List<BigDecimal> last = stack.getLastNOperands(1);
         if (last.get(0)
-                .compareTo(new BigDecimal(0)) < 0) {
+                .compareTo(BigDecimal.ZERO) < 0) {
             throw new SignException(command, SignException.Sign.Negative);
         }
     }

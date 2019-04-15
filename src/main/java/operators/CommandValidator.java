@@ -40,6 +40,7 @@ public class CommandValidator extends Operator {
         patterns.add(Subtract.PATTERN);
         patterns.add(Undo.PATTERN);
         patterns.add(Redo.PATTERN);
+        patterns.add(Factorial.PATTERN);
         return String.join("|", patterns);
     }
 }

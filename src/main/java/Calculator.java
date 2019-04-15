@@ -3,11 +3,13 @@ import helpers.*;
 import operators.Number;
 import operators.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Calculator {
     private OperandStack stack = new OperandStack();
     private List<Operator> operators = new ArrayList<>();
+    private InputHandler inputHandler = new PlainTextHandler();
 
     public Calculator() {
         operators.add(new CommandValidator());
@@ -20,8 +22,9 @@ public class Calculator {
         operators.add(new Undo());
         operators.add(new Redo());
         operators.add(new Sqrt());
+        operators.add(new Factorial());
         operators.add(new StackSnapshot());
-        Collections.sort(operators, new OperatorComparator());
+        operators.sort(new OperatorComparator());
     }
 
     public static void main(String[] args) {
@@ -37,7 +40,7 @@ public class Calculator {
     }
 
     private synchronized void process(String parameters) {
-        List<Command> commands = InputHandler.getCommands(parameters);
+        List<Command> commands = inputHandler.getCommands(parameters);
         try {
             for (Command comm : commands) {
                 for (Operator operator : operators) {
