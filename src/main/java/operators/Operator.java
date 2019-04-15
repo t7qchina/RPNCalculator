@@ -10,20 +10,21 @@ import java.util.regex.Pattern;
 
 public abstract class Operator implements Executable {
 
-    List<Executable> Validators;
+    List<Executable> validators;
 
-    Integer priority;
+    private Integer priority;
 
-    Pattern pattern;
+    private Pattern regex;
 
-    public Operator(String p) {
-        this.Validators = new LinkedList<>();
-        pattern = Pattern.compile(p);
+    public Operator(String pattern, int priority) {
+        this.validators = new LinkedList<>();
+        this.regex = Pattern.compile(pattern);
+        this.priority = priority;
     }
 
     public boolean Matches(String comm) {
         String command = comm.toLowerCase();
-        Matcher matcher = pattern.matcher(command);
+        Matcher matcher = regex.matcher(command);
         return matcher.matches();
     }
 
@@ -32,9 +33,9 @@ public abstract class Operator implements Executable {
     }
 
     @Override
-    public void execute(Command command, OperandStack stack) {
-        for (int i = 0; i < Validators.size(); i++) {
-            Validators.get(i)
+    public final void execute(Command command, OperandStack stack) {
+        for (int i = 0; i < validators.size(); i++) {
+            validators.get(i)
                     .execute(command, stack);
         }
         this.internalExecute(command, stack);

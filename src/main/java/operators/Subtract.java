@@ -9,12 +9,11 @@ import java.util.List;
 
 public class Subtract extends Operator {
 
-    static final String pattern = "^\\-$";
+    static final String PATTERN = "^\\-$";
 
     public Subtract() {
-        super(pattern);
-        this.priority = 100;
-        this.Validators.add(new ParametersCountValidator(2));
+        super(PATTERN, 100);
+        this.validators.add(new ParametersCountValidator(2));
     }
 
     @Override

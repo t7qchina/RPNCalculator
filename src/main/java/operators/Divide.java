@@ -9,13 +9,12 @@ import java.math.*;
 import java.util.List;
 
 public class Divide extends Operator {
-    static final String pattern = "^\\/$";
+    static final String PATTERN = "^\\/$";
 
     public Divide() {
-        super(pattern);
-        this.priority = 100;
-        this.Validators.add(new ParametersCountValidator(2));
-        this.Validators.add(new ZeroDividerValidator());
+        super(PATTERN, 100);
+        this.validators.add(new ParametersCountValidator(2));
+        this.validators.add(new ZeroDividerValidator());
     }
 
     @Override

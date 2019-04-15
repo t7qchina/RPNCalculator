@@ -6,11 +6,10 @@ import helpers.OperandStack;
 import java.math.BigDecimal;
 
 public class Redo extends HistoryOperator {
-    static final String pattern = "^redo$";
+    static final String PATTERN = "^redo$";
 
     public Redo() {
-        super(pattern);
-        this.priority = 100;
+        super(PATTERN, 100);
     }
 
     @Override

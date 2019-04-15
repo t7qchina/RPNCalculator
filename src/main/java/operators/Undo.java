@@ -6,11 +6,10 @@ import helpers.OperandStack;
 import java.math.BigDecimal;
 
 public class Undo extends HistoryOperator {
-    static final String pattern = "^undo$";
+    static final String PATTERN = "^undo$";
 
     public Undo() {
-        super(pattern);
-        this.priority = 100;
+        super(PATTERN, 100);
     }
 
     @Override

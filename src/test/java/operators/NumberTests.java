@@ -28,8 +28,7 @@ public class NumberTests {
     }
 
     @Test
-    public void testHighPrecisionNumber()
-    {
+    public void testHighPrecisionNumber() {
         OperandStack stack = new OperandStack();
         String num = "0.0000000000000000000000001";
         Number number = new Number();

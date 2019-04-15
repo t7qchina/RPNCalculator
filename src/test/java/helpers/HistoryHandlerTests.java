@@ -6,18 +6,18 @@ import java.math.BigDecimal;
 
 public class HistoryHandlerTests {
 
-    HistoryHandler handler;
-    OperandStack stack;
+    private HistoryHandler handler;
+    private OperandStack stack;
 
     @Before
     public void setup() {
         handler = new HistoryHandler();
         stack = new OperandStack();
-        stack.push(new BigDecimal(1.0));
-        stack.push(new BigDecimal(2.0));
-        stack.push(new BigDecimal(3.0));
-        stack.push(new BigDecimal(4.0));
-        stack.push(new BigDecimal(5.0));
+        stack.push(BigDecimal.valueOf(1.0));
+        stack.push(BigDecimal.valueOf(2.0));
+        stack.push(BigDecimal.valueOf(3.0));
+        stack.push(BigDecimal.valueOf(4.0));
+        stack.push(BigDecimal.valueOf(5.0));
     }
 
     @Test
@@ -48,7 +48,7 @@ public class HistoryHandlerTests {
         stack.pop();
         handler.addSnapshot(stack);
 
-        for(int i = 0; i < 10;i++) {
+        for (int i = 0; i < 10; i++) {
             handler.back();
         }
 
@@ -78,7 +78,7 @@ public class HistoryHandlerTests {
         stack.pop();
         handler.addSnapshot(stack);
 
-        for(int i = 0; i < 10;i++) {
+        for (int i = 0; i < 10; i++) {
             handler.forward();
         }
         Assert.assertEquals(stack, handler.getCurrent());

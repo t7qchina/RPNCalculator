@@ -7,8 +7,8 @@ public abstract class HistoryOperator extends Operator {
 
     private static final HistoryHandler HANDLER = new HistoryHandler();
 
-    public HistoryOperator(String pattern) {
-        super(pattern);
+    public HistoryOperator(String pattern, int priority) {
+        super(pattern, priority);
     }
 
     public OperandStack forward() {

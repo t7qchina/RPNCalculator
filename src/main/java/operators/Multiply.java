@@ -8,12 +8,11 @@ import java.math.*;
 import java.util.List;
 
 public class Multiply extends Operator {
-    static final String pattern = "^\\*$";
+    static final String PATTERN = "^\\*$";
 
     public Multiply() {
-        super(pattern);
-        this.priority = 100;
-        this.Validators.add(new ParametersCountValidator(2));
+        super(PATTERN, 100);
+        this.validators.add(new ParametersCountValidator(2));
     }
 
     @Override

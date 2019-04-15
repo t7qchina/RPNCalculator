@@ -1,19 +1,34 @@
 import exceptions.CalculatorException;
 import helpers.*;
-import operators.Operator;
-import operators.OperatorFactory;
+import operators.Number;
+import operators.*;
 
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 public class Calculator {
-    OperandStack stack = new OperandStack();
+    private OperandStack stack = new OperandStack();
+    private List<Operator> operators = new ArrayList<>();
+
+    public Calculator() {
+        operators.add(new CommandValidator());
+        operators.add(new Number());
+        operators.add(new Add());
+        operators.add(new Subtract());
+        operators.add(new Multiply());
+        operators.add(new Divide());
+        operators.add(new Clear());
+        operators.add(new Undo());
+        operators.add(new Redo());
+        operators.add(new Sqrt());
+        operators.add(new StackSnapshot());
+        Collections.sort(operators, new OperatorComparator());
+    }
 
     public static void main(String[] args) {
         new Calculator().start();
     }
 
-    public void start() {
+    private void start() {
         ParameterReceiver receiver = new ConsoleReceiver();
         while (true) {
             String parameters = receiver.receive();
@@ -25,16 +40,16 @@ public class Calculator {
         List<Command> commands = InputHandler.getCommands(parameters);
         try {
             for (Command comm : commands) {
-                Collection<Operator> operators = OperatorFactory.getOperators(comm);
                 for (Operator operator : operators) {
-                    operator.execute(comm, stack);
+                    if (operator.Matches(comm.getCommand())) {
+                        operator.execute(comm, stack);
+                    }
                 }
             }
         } catch (CalculatorException ex) {
             System.out.println(ex.getMessage());
         }
 
-        System.out.println(String.format("Stack: %s", stack.toString()));
-        System.out.println();
+        System.out.println(String.format("Stack: %s" + System.lineSeparator(), stack.toString()));
     }
 }

@@ -8,12 +8,11 @@ import java.math.BigDecimal;
 
 public class Number extends Operator {
 
-    static final String pattern = "^[+-]?\\d+(\\.\\d+)?([Ee][+-]?\\d+)?$";
+    static final String PATTERN = "^[+-]?\\d+(\\.\\d+)?([Ee][+-]?\\d+)?$";
 
     public Number() {
-        super(pattern);
-        this.priority = 100;
-        this.Validators.add(new NumberValidator());
+        super(PATTERN, 100);
+        this.validators.add(new NumberValidator());
     }
 
     @Override

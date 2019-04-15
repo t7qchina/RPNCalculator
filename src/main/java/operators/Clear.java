@@ -4,11 +4,10 @@ import helpers.Command;
 import helpers.OperandStack;
 
 public class Clear extends Operator {
-    static final String pattern = "^clear$";
+    static final String PATTERN = "^clear$";
 
     public Clear() {
-        super(pattern);
-        this.priority = 100;
+        super(PATTERN, 100);
     }
 
     @Override

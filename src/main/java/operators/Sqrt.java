@@ -14,14 +14,13 @@ import java.math.*;
 
 public class Sqrt extends Operator {
 
-    static final String pattern = "^sqrt$";
+    static final String PATTERN = "^sqrt$";
     private static final BigDecimal TWO = BigDecimal.valueOf(2L);
 
     public Sqrt() {
-        super(pattern);
-        this.priority = 100;
-        this.Validators.add(new ParametersCountValidator(1));
-        this.Validators.add(new PositiveValidator());
+        super(PATTERN, 100);
+        this.validators.add(new ParametersCountValidator(1));
+        this.validators.add(new PositiveValidator());
     }
 
     private BigDecimal sqrt(BigDecimal x, MathContext mc) {
