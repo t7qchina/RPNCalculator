@@ -12,7 +12,7 @@ public class Calculator {
     private InputHandler inputHandler = new PlainTextHandler();
 
     public Calculator() {
-        operators.add(new CommandValidator());
+        operators.add(new CommandPrechecker());
         operators.add(new Number());
         operators.add(new Add());
         operators.add(new Subtract());

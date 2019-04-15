@@ -13,14 +13,14 @@ import java.util.Arrays;
 import java.util.Collection;
 
 @RunWith(Enclosed.class)
-public class CommandValidatorTests {
+public class CommandPrecheckerTests {
 
     @RunWith(Parameterized.class)
     public static class InvalidTests {
 
         @Parameterized.Parameter
         public String input;
-        CommandValidator validator;
+        CommandPrechecker validator;
 
         @Parameterized.Parameters
         public static Collection<String> data() {
@@ -29,7 +29,7 @@ public class CommandValidatorTests {
 
         @Before
         public void setup() {
-            validator = new CommandValidator();
+            validator = new CommandPrechecker();
         }
 
         @Test(expected = InvalidCommandException.class)
@@ -41,11 +41,11 @@ public class CommandValidatorTests {
 
     public static class ValidTests {
 
-        CommandValidator validator;
+        CommandPrechecker validator;
 
         @Before
         public void setup() {
-            validator = new CommandValidator();
+            validator = new CommandPrechecker();
         }
 
         @Test

@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CommandValidator extends Operator {
+public class CommandPrechecker extends Operator {
 
     static final String PATTERN = "^\\S+$";
 
     private Pattern p;
 
-    public CommandValidator() {
+    public CommandPrechecker() {
         super(PATTERN, 1);
         p = Pattern.compile(getSupportedPatterns());
     }
