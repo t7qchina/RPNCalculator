@@ -24,20 +24,17 @@ public class FactorialTests {
     public void testFactorialWithoutException() {
         stack.push(new BigDecimal(1.0));
         factorial.execute(command, stack);
-        Assert.assertEquals(new BigDecimal(1), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(1), stack.getLastOperand());
 
 
         stack.push(new BigDecimal(0.0));
         factorial.execute(command, stack);
-        Assert.assertEquals(new BigDecimal(1), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(1), stack.getLastOperand());
 
 
         stack.push(new BigDecimal(4));
         factorial.execute(command, stack);
-        Assert.assertEquals(BigDecimal.valueOf(24), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(BigDecimal.valueOf(24), stack.getLastOperand());
     }
 
 

@@ -22,28 +22,23 @@ public class SqrtTests {
         OperandStack stack = new OperandStack();
         stack.push(new BigDecimal(0.0));
         sqrt.execute(command, stack);
-        Assert.assertEquals(new BigDecimal(0.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(0.0), stack.getLastOperand());
 
         stack.push(new BigDecimal(1.0));
         sqrt.execute(command, stack);
-        Assert.assertEquals(new BigDecimal(1.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(1.0), stack.getLastOperand());
 
         stack.push(new BigDecimal("0.04"));
         sqrt.execute(command, stack);
-        Assert.assertEquals(new BigDecimal("0.2"), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal("0.2"), stack.getLastOperand());
 
         stack.push(new BigDecimal(4.0));
         sqrt.execute(command, stack);
-        Assert.assertEquals(new BigDecimal(2.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(2.0), stack.getLastOperand());
 
         stack.push(new BigDecimal(10.0));
         sqrt.execute(command, stack);
-        Assert.assertEquals(new BigDecimal("3.16227766016838"), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal("3.16227766016838"), stack.getLastOperand());
     }
 
     @Test(expected = SignException.class)

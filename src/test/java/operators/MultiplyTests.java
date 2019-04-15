@@ -22,7 +22,6 @@ public class MultiplyTests {
         stack.push(new BigDecimal(1.0));
         stack.push(new BigDecimal(2.0));
         new Multiply().execute(multiply, stack);
-        Assert.assertEquals(new BigDecimal(2), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(2), stack.getLastOperand());
     }
 }

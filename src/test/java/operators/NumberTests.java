@@ -14,16 +14,13 @@ public class NumberTests {
         OperandStack stack = new OperandStack();
         Number number = new Number();
         number.execute(new Command(0, "1"), stack);
-        Assert.assertEquals(new BigDecimal(1.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(1.0), stack.getLastOperand());
 
         number.execute(new Command(0, "1.1"), stack);
-        Assert.assertEquals(new BigDecimal("1.1"), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal("1.1"), stack.getLastOperand());
 
         number.execute(new Command(0, "123.1e3"), stack);
-        Assert.assertEquals(new BigDecimal("123100").toPlainString(), stack.getLastNOperands(1)
-                .get(0)
+        Assert.assertEquals(new BigDecimal("123100").toPlainString(), stack.getLastOperand()
                 .toPlainString());
     }
 
@@ -33,8 +30,7 @@ public class NumberTests {
         String num = "0.0000000000000000000000001";
         Number number = new Number();
         number.execute(new Command(0, num), stack);
-        Assert.assertEquals(BigDecimal.ZERO, stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(BigDecimal.ZERO, stack.getLastOperand());
     }
 
     @Test(expected = InvalidNumberFormatException.class)

@@ -12,8 +12,7 @@ public class HistoryHandler {
     }
 
     public synchronized OperandStack back() {
-        index -= 1;
-        if (index < 0) {
+        if (--index < 0) {
             index = 0;
         }
         return snapshots.get(index);
@@ -24,8 +23,7 @@ public class HistoryHandler {
     }
 
     public synchronized OperandStack forward() {
-        index += 1;
-        if (index == snapshots.size()) {
+        if (++index == snapshots.size()) {
             index = snapshots.size() - 1;
         }
         return snapshots.get(index);
@@ -47,5 +45,13 @@ public class HistoryHandler {
                 snapshots.remove(next);
             }
         }
+    }
+
+    public int getCurrentIndex() {
+        return index;
+    }
+
+    public int getHistorySize() {
+        return snapshots.size();
     }
 }

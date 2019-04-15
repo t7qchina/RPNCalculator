@@ -29,12 +29,20 @@ public class OperandStack extends Stack<BigDecimal> {
         return result;
     }
 
+    public BigDecimal getLastOperand() {
+        return getLastNOperands(1).get(0);
+    }
+
     public OperandStack popLastNOperands(int n) {
         OperandStack result = getLastNOperands(n);
         for (int i = 0; i < n; i++) {
             this.pop();
         }
         return result;
+    }
+
+    public BigDecimal popLastOperand() {
+        return popLastNOperands(1).get(0);
     }
 
     @Override

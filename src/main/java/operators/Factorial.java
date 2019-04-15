@@ -20,8 +20,7 @@ public class Factorial extends Operator {
 
     @Override
     protected void internalExecute(Command command, OperandStack stack) {
-        BigInteger n = stack.popLastNOperands(1)
-                .get(0)
+        BigInteger n = stack.popLastOperand()
                 .toBigIntegerExact();
 
         BigInteger start = BigInteger.ONE;

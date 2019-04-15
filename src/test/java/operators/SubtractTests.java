@@ -21,12 +21,10 @@ public class SubtractTests {
         stack.push(new BigDecimal(1.0));
         stack.push(new BigDecimal(2.0));
         new Subtract().execute(command, stack);
-        Assert.assertEquals(new BigDecimal(-1.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(-1.0), stack.getLastOperand());
 
         stack.push(new BigDecimal(-5.0));
         new Subtract().execute(command, stack);
-        Assert.assertEquals(new BigDecimal(4.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(4.0), stack.getLastOperand());
     }
 }

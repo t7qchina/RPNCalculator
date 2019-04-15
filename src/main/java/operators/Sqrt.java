@@ -44,8 +44,7 @@ public class Sqrt extends Operator {
 
     @Override
     protected void internalExecute(Command command, OperandStack stack) {
-        BigDecimal operand = stack.popLastNOperands(1)
-                .get(0);
+        BigDecimal operand = stack.popLastOperand();
         stack.push(sqrt(operand, new MathContext(OperandStack.PRECISION, RoundingMode.HALF_UP)));
     }
 }

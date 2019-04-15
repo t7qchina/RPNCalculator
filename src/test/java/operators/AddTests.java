@@ -22,7 +22,6 @@ public class AddTests {
         stack.push(new BigDecimal(1.0));
         stack.push(new BigDecimal(2.0));
         new Add().execute(add, stack);
-        Assert.assertEquals(new BigDecimal(3.0), stack.getLastNOperands(1)
-                .get(0));
+        Assert.assertEquals(new BigDecimal(3.0), stack.getLastOperand());
     }
 }

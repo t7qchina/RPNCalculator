@@ -13,6 +13,6 @@ public class StackSnapshot extends HistoryOperator {
 
     @Override
     protected void internalExecute(Command command, OperandStack stack) {
-        super.addSnapshot(stack);
+        HANDLER.addSnapshot(stack);
     }
 }
