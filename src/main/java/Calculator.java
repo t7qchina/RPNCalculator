@@ -44,7 +44,7 @@ public class Calculator {
         try {
             for (Command comm : commands) {
                 for (Operator operator : operators) {
-                    if (operator.Matches(comm.getCommand())) {
+                    if (operator.serve(comm.getCommand())) {
                         operator.execute(comm, stack);
                     }
                 }
