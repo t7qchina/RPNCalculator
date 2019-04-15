@@ -10,6 +10,7 @@ public class Calculator {
     private OperandStack stack = new OperandStack();
     private List<Operator> operators = new ArrayList<>();
     private InputHandler inputHandler = new PlainTextHandler();
+    private ParameterReceiver receiver = new ConsoleReceiver();
 
     public Calculator() {
         operators.add(new CommandPrechecker());
@@ -32,7 +33,6 @@ public class Calculator {
     }
 
     private void start() {
-        ParameterReceiver receiver = new ConsoleReceiver();
         while (true) {
             String parameters = receiver.receive();
             process(parameters);
@@ -44,7 +44,7 @@ public class Calculator {
         try {
             for (Command comm : commands) {
                 for (Operator operator : operators) {
-                    if (operator.serve(comm.getCommand())) {
+                    if (operator.serve(comm)) {
                         operator.execute(comm, stack);
                     }
                 }

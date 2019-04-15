@@ -22,9 +22,9 @@ public abstract class Operator implements Executable {
         this.priority = priority;
     }
 
-    public boolean serve(String comm) {
-        String command = comm.toLowerCase();
-        Matcher matcher = regex.matcher(command);
+    public boolean serve(Command comm) {
+        Matcher matcher = regex.matcher(comm.getCommand()
+                .toLowerCase());
         return matcher.matches();
     }
 
