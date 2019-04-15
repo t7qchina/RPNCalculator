@@ -1,0 +1,38 @@
+plugins {
+  id 'java'
+  id 'jacoco'
+}
+
+group 'sample.qiuliangmo.cn'
+version '1.0'
+
+sourceCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+jar {
+  manifest {
+    attributes(
+            'Class-Path': configurations.compile.collect {it.getName()}.join( ' ' ),
+            'Main-Class': 'Calculator'
+    )
+  }
+}
+
+jacoco {
+  toolVersion = '0.8.1'
+}
+
+jacocoTestReport {
+  reports {
+    xml.setEnabled( false )
+    csv.setEnabled( false )
+    html.setDestination( new File( "${buildDir}/jacocoHtml" ) )
+  }
+}
