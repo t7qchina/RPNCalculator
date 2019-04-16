@@ -44,7 +44,7 @@ public class Calculator {
             try {
                 for (Command comm : commands) {
                     for (Operator operator : operators) {
-                        if (operator.serve(comm)) {
+                        if (operator.matches(comm)) {
                             operator.execute(comm, stack);
                         }
                     }
