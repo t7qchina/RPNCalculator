@@ -1,6 +1,6 @@
 package operators.validators;
 
-import exceptions.HistoryOutOfBoundaryException;
+import exceptions.OutOfHistoryBoundaryException;
 import helpers.*;
 import operators.Executable;
 
@@ -19,11 +19,11 @@ public class HistoryBoundaryChecker implements Executable {
         if (command.getCommand()
                 .toLowerCase()
                 .equals(REDO) && handler.getHistorySize() == handler.getCurrentIndex() + 1) {
-            throw new HistoryOutOfBoundaryException(command, HistoryOutOfBoundaryException.Position.Tail);
+            throw new OutOfHistoryBoundaryException(command, OutOfHistoryBoundaryException.Position.Tail);
         } else if (command.getCommand()
                 .toLowerCase()
                 .equals(UNDO) && handler.getCurrentIndex() == 0) {
-            throw new HistoryOutOfBoundaryException(command, HistoryOutOfBoundaryException.Position.Head);
+            throw new OutOfHistoryBoundaryException(command, OutOfHistoryBoundaryException.Position.Head);
         }
     }
 }

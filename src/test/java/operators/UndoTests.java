@@ -1,6 +1,6 @@
 package operators;
 
-import exceptions.HistoryOutOfBoundaryException;
+import exceptions.OutOfHistoryBoundaryException;
 import helpers.Command;
 import helpers.OperandStack;
 import org.junit.*;
@@ -49,7 +49,7 @@ public class UndoTests {
                 .get(0));
     }
 
-    @Test(expected = HistoryOutOfBoundaryException.class)
+    @Test(expected = OutOfHistoryBoundaryException.class)
     public void testUndoOverflow() {
         for (int i = 0; i < 100; i++) {
             stackUndo.execute(undo, stack);

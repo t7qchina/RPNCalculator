@@ -1,6 +1,6 @@
 package operators;
 
-import exceptions.HistoryOutOfBoundaryException;
+import exceptions.OutOfHistoryBoundaryException;
 import helpers.Command;
 import helpers.OperandStack;
 import org.junit.*;
@@ -60,7 +60,7 @@ public class RedoTests {
     }
 
 
-    @Test(expected = HistoryOutOfBoundaryException.class)
+    @Test(expected = OutOfHistoryBoundaryException.class)
     public void testRedoOverflow() {
         for (int i = 0; i < 100; i++) {
             stackRedo.execute(redo, stack);
