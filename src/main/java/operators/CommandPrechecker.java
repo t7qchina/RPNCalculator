@@ -16,7 +16,7 @@ public class CommandPrechecker extends Operator {
     private Pattern p;
 
     public CommandPrechecker() {
-        super(PATTERN, 1);
+        super(PATTERN, 0);
         p = Pattern.compile(getSupportedPatterns());
     }
 
@@ -31,6 +31,7 @@ public class CommandPrechecker extends Operator {
 
     private String getSupportedPatterns() {
         List<String> patterns = new ArrayList<>();
+        patterns.add(Exit.PATTERN);
         patterns.add(Add.PATTERN);
         patterns.add(Clear.PATTERN);
         patterns.add(Divide.PATTERN);

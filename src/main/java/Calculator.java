@@ -1,4 +1,5 @@
 import exceptions.CalculatorException;
+import exceptions.ExitException;
 import helpers.*;
 import operators.Number;
 import operators.*;
@@ -14,6 +15,7 @@ public class Calculator {
 
     public Calculator() {
         operators.add(new CommandPrechecker());
+        operators.add(new Exit());
         operators.add(new Number());
         operators.add(new Add());
         operators.add(new Subtract());
@@ -38,24 +40,23 @@ public class Calculator {
     private void start() {
         while (true) {
             String parameters = receiver.receive();
-            process(parameters);
-        }
-    }
-
-    private synchronized void process(String parameters) {
-        List<Command> commands = inputHandler.getCommands(parameters);
-        try {
-            for (Command comm : commands) {
-                for (Operator operator : operators) {
-                    if (operator.serve(comm)) {
-                        operator.execute(comm, stack);
+            List<Command> commands = inputHandler.getCommands(parameters);
+            try {
+                for (Command comm : commands) {
+                    for (Operator operator : operators) {
+                        if (operator.serve(comm)) {
+                            operator.execute(comm, stack);
+                        }
                     }
                 }
+            } catch (ExitException ex) {
+                System.out.println(ex.getMessage());
+                return;
+            } catch (CalculatorException ex) {
+                System.out.println(ex.getMessage());
+            } finally {
+                System.out.println(String.format("Stack: %s" + System.lineSeparator(), stack.toString()));
             }
-        } catch (CalculatorException ex) {
-            System.out.println(ex.getMessage());
         }
-
-        System.out.println(String.format("Stack: %s" + System.lineSeparator(), stack.toString()));
     }
 }
