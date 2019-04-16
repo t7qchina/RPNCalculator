@@ -10,7 +10,8 @@ import helpers.OperandStack;
 import operators.validators.ParametersCountValidator;
 import operators.validators.PositiveValidator;
 
-import java.math.*;
+import java.math.BigDecimal;
+import java.math.MathContext;
 
 public class Sqrt extends Operator {
 
@@ -45,6 +46,6 @@ public class Sqrt extends Operator {
     @Override
     protected void internalExecute(Command command, OperandStack stack) {
         BigDecimal operand = stack.popLastOperand();
-        stack.push(sqrt(operand, new MathContext(OperandStack.PRECISION, RoundingMode.HALF_UP)));
+        stack.push(sqrt(operand, OperandStack.PRECISION));
     }
 }

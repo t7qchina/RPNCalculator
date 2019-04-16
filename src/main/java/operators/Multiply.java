@@ -4,7 +4,7 @@ import helpers.Command;
 import helpers.OperandStack;
 import operators.validators.ParametersCountValidator;
 
-import java.math.*;
+import java.math.BigDecimal;
 import java.util.List;
 
 public class Multiply extends Operator {
@@ -19,6 +19,6 @@ public class Multiply extends Operator {
     protected void internalExecute(Command command, OperandStack stack) {
         List<BigDecimal> operands = stack.popLastNOperands(2);
         stack.push(operands.get(0)
-                .multiply(operands.get(1), new MathContext(OperandStack.PRECISION, RoundingMode.HALF_UP)));
+                .multiply(operands.get(1), OperandStack.PRECISION));
     }
 }

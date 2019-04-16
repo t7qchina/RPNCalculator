@@ -41,6 +41,9 @@ public class CommandPrechecker extends Operator {
         patterns.add(Undo.PATTERN);
         patterns.add(Redo.PATTERN);
         patterns.add(Factorial.PATTERN);
+        patterns.add(Pi.PATTERN);
+        patterns.add(Pow.PATTERN);
+        patterns.add(Perimeter.PATTERN);
         return String.join("|", patterns);
     }
 }

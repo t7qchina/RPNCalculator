@@ -24,6 +24,9 @@ public class Calculator {
         operators.add(new Redo());
         operators.add(new Sqrt());
         operators.add(new Factorial());
+        operators.add(new Pi());
+        operators.add(new Perimeter());
+        operators.add(new Pow());
         operators.add(new StackSnapshot());
         operators.sort(new OperatorComparator());
     }
